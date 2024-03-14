@@ -1,30 +1,31 @@
 ---
 title: "Assignment 2"
-author: "YOUR NAME HERE"
+author: "Emily Berlinghoff"
 date: "`r Sys.Date()`"
-output: 
+output:
+    pdf_document: default
 ---
 
 # Importing the data
-```{r}
-a2 <-  read.csv()  # make sure you fill out this code; you can change it from a2 to whatever you want
-
-# if you use any packages, you can library() them here (but none are needed)
-
+```{r Importing Data, echo=FALSE}
+# I've used R and Python for quantum computing before so I'm gonna use things we didn't learn in class for my own practice.
+a2 <-  read.csv("assign.csv")
+library(ggplot2)
+install.packages("rmarkdown")
+library(rmarkdown)
+rmarkdown::render("Assignment2.Rmd",output_file="Assignment2.pdf")
 ```
 
 # Question 1  
 
 ## Part a  
-
-You'd put your answer to part a here. 
+The explanatory variables based on the research quesiton are the **sex** and **screen**. We observe both of these variables to see how they affect the response variable of **physical**. 
 
 ## Part b  
-
-Use this space for part b. 
+The variable in the dataset I will use to answer the research question are **sex**, **screen**, and **tilt**. 
 
 ## Part c  
-Use this space for part c
+The categorical variable is **sex**. The qualitative variables are **screen** and **tilt**.
 
 ## Part d  
 (remove this if you aren't doing any manipulation/transformation,etc.)
@@ -37,17 +38,15 @@ Use this space for part c
 # Question 2  
 
 
-```{r}
-# code for making your graph etc.
-
+```{r Graph, echo=FALSE}
+ggplot(a2, aes(x=screen, y=tilt colour=sex)) + # making x and y axis
+    geom_point(size=3, shape=19, alpha=0.7) + # making the points
+    geom_smooth(method="lm", se=FALSE) + # add linear trend lines without the confidence interval
+    labs(title="Relationship Between Screen Time and Flexibility by Sex", # add title
+        x="Screen Time (hours/day)",
+        y="Tilt (degrees)",
+        color="Sex") +
+    theme_minimal() + # making it look nicer
+    scale_colour_manual(values=c("blue","pink")) # blue for male and pink for male
 
 ```
-
-
-```{r}
-# just another chunk in case you want it!
-
-
-```
-
-
