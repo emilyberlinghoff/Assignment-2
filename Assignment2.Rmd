@@ -29,7 +29,7 @@ The *categorical variable* is **sex**. The *qualitative variables* are **screen*
 
 
 ```{r Graph, echo=TRUE}
-ggplot(a2, aes(x=screen, y=physical, color=sex)) + # making x and y axis
+ggplot(a2, aes(x=screen, y=tilt, color=sex)) + # making x and y axis
     geom_point(size=2, shape=20, alpha=0.5) + # making the points
     geom_smooth(method="lm", se=FALSE, aes(group=sex)) + # add linear trend lines without the confidence interval
     labs(title="Relationship Between Screen Time and Flexibility by Sex", x="Screen Time (hours/day)", y="Tilt (degrees)", color="Sex") +
